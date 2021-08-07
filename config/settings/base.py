@@ -152,7 +152,7 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(APPS_DIR, 'static')
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 
 SASS_PROCESSOR_ROOT = os.path.join(APPS_DIR,'static')
 
