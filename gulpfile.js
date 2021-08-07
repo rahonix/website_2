@@ -45,5 +45,5 @@ const dev = gulp.parallel(
     watch,
 )
 
-exports.build = buildStyles;
+exports.buildStyles = buildStyles;
 exports.dev = dev;
