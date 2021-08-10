@@ -8,7 +8,7 @@ const reload = browserSync.reload;
 
 function buildStyles() {
     return gulp.src('./website/static/scss/*.scss')
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('./website/static/css'));
   };
 
@@ -31,12 +31,13 @@ function initBrowserSync() {
                 proxy: 'localhost:8000',
             }
         )
-    }, 1000);
+    }, 2000);
 }
 
 function watch() {
-    gulp.watch('./website/static/scss/*.scss', gulp.series('buildStyles')).on("change", reload);
-    gulp.watch('./website/Static/css/*.css').on("change", reload);
+    gulp.watch(['./website/static/scss/*.scss', './website/static/scss/**/*.scss'], gulp.series('buildStyles')).on('change', reload);
+    gulp.watch('./website/Static/css/*.css').on('change', reload);
+    gulp.watch(['./website/templates/*.html', './website/templates/**/*.html']).on('change', reload);
 };
 
 const dev = gulp.parallel(
